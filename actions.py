@@ -6,7 +6,11 @@ connection = psycopg2.connect(connect_str)
 
 
 def plain_text(text):
-    return str(text).replace(',', '').replace("'", '').replace('(', '').replace(')', '').replace('[', '').replace(']', '')
+    text_list = str(text)
+    dic = {",": "", "'": "", "(": "", ")": "", "[": "", "]": ""}
+    for i, j in dic.items():
+        text_list = text_list.replace(i, j)
+    return text_list
 
 
 def mentor_names():
